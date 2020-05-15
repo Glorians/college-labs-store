@@ -12,15 +12,15 @@
         <item>Одяг</item>
     </string-array>
 
-    <string-array name="categoryIcons">
-        <item>@drawable/pc</item>
-        <item>@drawable/mobile</item>
-        <item>@drawable/machine</item>
-        <item>@drawable/drill</item>
-        <item>@drawable/wc</item>
-        <item>@drawable/shovel</item>
-        <item>@drawable/tshirt</item>
-    </string-array>
+<!--    <string-array name="categoryIcons">-->
+<!--        <item>@drawable/pc</item>-->
+<!--        <item>@drawable/mobile</item>-->
+<!--        <item>@drawable/machine</item>-->
+<!--        <item>@drawable/drill</item>-->
+<!--        <item>@drawable/wc</item>-->
+<!--        <item>@drawable/shovel</item>-->
+<!--        <item>@drawable/tshirt</item>-->
+<!--    </string-array>-->
 
 
 </resources>
