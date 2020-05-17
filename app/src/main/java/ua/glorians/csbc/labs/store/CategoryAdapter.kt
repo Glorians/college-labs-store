@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import javax.security.auth.callback.Callback
 
 
-class CategoryAdapter (private val listCategory: MutableList<Category>, val callback: Callback): RecyclerView.Adapter<CategoryAdapter.HolderCategory>() {
+
+class CategoryAdapter (private val items: MutableList<Category>, val callback: Callback):
+    RecyclerView.Adapter<CategoryAdapter.HolderCategory>() {
 
 
     override fun onCreateViewHolder(
@@ -18,10 +19,10 @@ class CategoryAdapter (private val listCategory: MutableList<Category>, val call
     ) = HolderCategory(LayoutInflater.from(parent.context).inflate(R.layout.item_category,
     parent, false))
 
-    override fun getItemCount() = listCategory.size
+    override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: HolderCategory, position: Int) {
-        holder.bind(listCategory[position])
+        holder.bind(items[position])
     }
 
     inner class HolderCategory(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -32,9 +33,9 @@ class CategoryAdapter (private val listCategory: MutableList<Category>, val call
         fun bind(item: Category) {
             headline.text = item.headline
             icon.setImageResource(item.icon)
-            itemView.setOnClickListener(
-                if (adapterPosition != RecyclerView.NO_POSITION) callback.onItemClicked(listCategory[adapterPosition])
-            )
+            itemView.setOnClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION) callback.onItemClicked(items[adapterPosition])
+            }
         }
     }
 
@@ -42,4 +43,6 @@ class CategoryAdapter (private val listCategory: MutableList<Category>, val call
         fun onItemClicked(category: Category)
     }
     }
+
+
 

@@ -10,8 +10,8 @@
         android:id="@+id/iconCategory"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:src="@color/colorPrimary"
         android:layout_marginStart="30dp"
-        android:src=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -22,11 +22,12 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_medium"
         android:text=""
+        android:textAlignment="textStart"
         android:textAllCaps="true"
-        android:textSize="24sp"
-        android:textAlignment="center"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toEndOf="@+id/iconCategory"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
