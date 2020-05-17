@@ -1,4 +1,4 @@
-package ua.glorians.csbc.labs.store
+package ua.glorians.csbc.labs.store.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.recyclerview.widget.AsyncListDiffer
 import kotlinx.android.synthetic.main.activity_main.*
+import ua.glorians.csbc.labs.store.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +23,11 @@ class MainActivity : AppCompatActivity() {
 
         btn_start_activity_category.setOnClickListener() {
             val intent = Intent(this, ListCategoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnRegistration.setOnClickListener{
+            val intent = Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
         }
     }

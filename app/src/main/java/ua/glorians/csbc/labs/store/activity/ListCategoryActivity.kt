@@ -1,10 +1,13 @@
-package ua.glorians.csbc.labs.store
+package ua.glorians.csbc.labs.store.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_list_category.*
+import ua.glorians.csbc.labs.store.Category
+import ua.glorians.csbc.labs.store.CategoryAdapter
+import ua.glorians.csbc.labs.store.R
 
 class ListCategoryActivity : AppCompatActivity() {
 
@@ -16,10 +19,12 @@ class ListCategoryActivity : AppCompatActivity() {
         Log.d("DEBUG", list[0].headline)
         Log.d("DEBUG", list[0].icon.toString())
         listCategory.layoutManager = LinearLayoutManager(this)
-        listCategory.adapter = CategoryAdapter(list, object : CategoryAdapter.Callback {
+        listCategory.adapter = CategoryAdapter(
+            list,
+            object : CategoryAdapter.Callback {
 
-            override fun onItemClicked(item: Category) {
-                // На будущее
+                override fun onItemClicked(item: Category) {
+                    // На будущее
 
 //                Toast.makeText(this, resources.getString(item.headline), Toast.LENGTH_SHORT).show()
 //                println(resources.getString(item.headline))
@@ -30,9 +35,9 @@ class ListCategoryActivity : AppCompatActivity() {
 //                    .replace(R.id.fragment_list, detailsFragment, "detailsFragment")
 //                    .addToBackStack(null)
 //                    .commit()
-            }
+                }
 
-        })
+            })
     }
 
     private fun dataCategory () : MutableList<Category>{
@@ -43,7 +48,13 @@ class ListCategoryActivity : AppCompatActivity() {
         var i = 0
         val count: Int = listCategoryHeadline.size
         while (i < count) {
-            listCategory.add(Category(listCategoryHeadline[i], listCategoryIcon.getResourceId(i, -1), i.toString()))
+            listCategory.add(
+                Category(
+                    listCategoryHeadline[i],
+                    listCategoryIcon.getResourceId(i, -1),
+                    i.toString()
+                )
+            )
             i++
         }
 

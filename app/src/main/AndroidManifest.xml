@@ -10,10 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListCategoryActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activity.RegistrationActivity"></activity>
+        <activity android:name=".activity.ListCategoryActivity" />
+        <activity android:name=".activity.MainActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

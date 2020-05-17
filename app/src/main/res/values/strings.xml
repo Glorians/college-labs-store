@@ -6,6 +6,9 @@
 
     <string name="btn_start_store">Перейти до магазину</string>
 
+    <string name="reg_name">Придумайте ім\'я</string>
+    <string name="reg_email">Email</string>
+
 
     <string-array name="category">
         <item>Ноутбуки та комп\'ютери</item>
