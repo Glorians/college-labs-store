@@ -1,10 +1,12 @@
 package ua.glorians.csbc.labs.store.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_list_category.*
+import kotlinx.android.synthetic.main.activity_main.*
 import ua.glorians.csbc.labs.store.Category
 import ua.glorians.csbc.labs.store.CategoryAdapter
 import ua.glorians.csbc.labs.store.R
@@ -14,6 +16,13 @@ class ListCategoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_category)
+
+        toolbar1.setNavigationIcon(R.drawable.ic_back_white)
+
+        toolbar1.setNavigationOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         val list = dataCategory()
         Log.d("DEBUG", list[0].headline)

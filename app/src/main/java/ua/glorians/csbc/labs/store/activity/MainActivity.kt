@@ -43,8 +43,8 @@ class MainActivity : AppCompatActivity() {
 
         when(itemview) {
 
-            R.id.developer -> Toast.makeText(applicationContext,"Dev Clicked", Toast.LENGTH_SHORT).show()
-            R.id.app_info -> Toast.makeText(applicationContext, "App Info Cliked", Toast.LENGTH_SHORT).show()
+            R.id.developer -> startActivity(Intent(this, DeveloperActivity::class.java))
+            R.id.app_info -> startActivity(Intent(this, InfoActivity::class.java))
         }
         return false
     }

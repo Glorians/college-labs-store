@@ -10,11 +10,11 @@
         android:id="@+id/iconCategory"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginStart="20dp"
         android:src="@color/colorPrimary"
-        android:layout_marginStart="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Headline"

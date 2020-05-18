@@ -6,11 +6,12 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import ua.glorians.csbc.labs.store.R
 
-class RegistrationActivity : AppCompatActivity() {
+class InfoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registration)
+        setContentView(R.layout.activity_info)
+
         toolbar.setNavigationIcon(R.drawable.ic_back_white)
 
         toolbar.setNavigationOnClickListener{
