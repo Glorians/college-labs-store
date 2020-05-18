@@ -11,8 +11,9 @@ class RegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
-        toolbar.setNavigationIcon(R.drawable.ic_back_white)
 
+        // Кнопка назад
+        toolbar.setNavigationIcon(R.drawable.ic_back_white)
         toolbar.setNavigationOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

@@ -17,27 +17,31 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar((toolbar))
 
+        // Заділ на майбутнє При натисканні повинна відкриватись менюшка
         toolbar.setNavigationOnClickListener {
             Toast.makeText(this, "Navigation Menu Clicked", Toast.LENGTH_SHORT).show()
         }
 
+        // Відкриваємо магазин натиском кнопки
         btn_start_activity_category.setOnClickListener() {
             val intent = Intent(this, ListCategoryActivity::class.java)
             startActivity(intent)
         }
 
+        // Відкриваємо активність з регестрацією
         btnRegistration.setOnClickListener{
             val intent = Intent(this, RegistrationActivity::class.java)
             startActivity(intent)
         }
     }
 
-
+    // Створюємо меню в toolbar (верхня панель)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.mainmenu, menu)
         return true
     }
 
+    // Прослуховувач подій на кнопки в меню (toolbar)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var itemview = item.itemId
 

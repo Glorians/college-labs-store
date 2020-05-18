@@ -14,8 +14,8 @@ class DeveloperActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_developer)
 
+        // Кнопка назад
         toolbar.setNavigationIcon(R.drawable.ic_back_white)
-
         toolbar.setNavigationOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

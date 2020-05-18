@@ -12,8 +12,10 @@ class InfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
 
-        toolbar.setNavigationIcon(R.drawable.ic_back_white)
 
+
+        // Кнопка назад
+        toolbar.setNavigationIcon(R.drawable.ic_back_white)
         toolbar.setNavigationOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
