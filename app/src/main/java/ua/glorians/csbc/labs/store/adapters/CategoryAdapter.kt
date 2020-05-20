@@ -1,4 +1,4 @@
-package ua.glorians.csbc.labs.store
+package ua.glorians.csbc.labs.store.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import ua.glorians.csbc.labs.store.model.Category
+import ua.glorians.csbc.labs.store.R
 
 
 // Адаптер для катеторій
@@ -16,7 +18,8 @@ class CategoryAdapter (private val items: MutableList<Category>, val callback: C
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ) = HolderCategory(LayoutInflater.from(parent.context).inflate(R.layout.item_category,
+    ) = HolderCategory(LayoutInflater.from(parent.context).inflate(
+        R.layout.item_category,
     parent, false))
 
     // Кількість items
@@ -36,6 +39,7 @@ class CategoryAdapter (private val items: MutableList<Category>, val callback: C
         fun bind(item: Category) {
             headline.text = item.headline
             icon.setImageResource(item.icon)
+
             // Вішаємо прослуховувач подій, потрібен для натискання на item...
             itemView.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION) callback.onItemClicked(items[adapterPosition])
@@ -47,7 +51,7 @@ class CategoryAdapter (private val items: MutableList<Category>, val callback: C
     interface  Callback {
         fun onItemClicked(category: Category)
     }
-    }
+}
 
 
 

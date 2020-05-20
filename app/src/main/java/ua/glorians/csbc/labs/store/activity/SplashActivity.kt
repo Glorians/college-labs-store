@@ -22,6 +22,4 @@ class SplashActivity : AppCompatActivity() {
         }, 3000) // 3 секунди (3000) - через скільки закриється заставка
     }
 
-
-
 }

@@ -3,10 +3,12 @@ package ua.glorians.csbc.labs.store.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_list_category.*
-import ua.glorians.csbc.labs.store.Category
-import ua.glorians.csbc.labs.store.CategoryAdapter
+import ua.glorians.csbc.labs.store.model.Category
+import ua.glorians.csbc.labs.store.adapters.CategoryAdapter
 import ua.glorians.csbc.labs.store.R
 
 class ListCategoryActivity : AppCompatActivity() {
@@ -14,25 +16,24 @@ class ListCategoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_category)
+        initToolbar()
+        initAdapter()
+        Toast.makeText(this, "text", Toast.LENGTH_SHORT).show()
+
+    }
 
 
-        // Кнопка назад
-        toolbar1.setNavigationIcon(R.drawable.ic_back_white)
-        toolbar1.setNavigationOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
 
+    private fun initAdapter () {
         val list = dataCategory() //Масив з об'єктами типу Category
 
         // Адаптер Category
         listCategory.layoutManager = LinearLayoutManager(this)
-        listCategory.adapter = CategoryAdapter(
-            list,
-            object : CategoryAdapter.Callback {
-                // На майбутнє
-                override fun onItemClicked(item: Category) {
-//                Toast.makeText(this, resources.getString(item.headline), Toast.LENGTH_SHORT).show()
+        listCategory.adapter = CategoryAdapter( list,
+                object :
+                    CategoryAdapter.Callback {
+                    override fun onItemClicked(category: Category) {
+                        Log.d("DEBUG", category.headline)
 //                println(resources.getString(item.headline))
 //                val detailsFragment =
 //                    DetailsFragment.newInstance(item)
@@ -40,8 +41,8 @@ class ListCategoryActivity : AppCompatActivity() {
 //                    .replace(R.id.fragment_list, detailsFragment, "detailsFragment")
 //                    .addToBackStack(null)
 //                    .commit()
-                }
-            })
+                    }
+                })
     }
 
     // Метод який сворює об'єкти Category
@@ -67,6 +68,16 @@ class ListCategoryActivity : AppCompatActivity() {
             )
             i++
         }
+        listCategoryIcon.recycle() // Звільняємо пам'ять
         return listCategory // Повертаємо результат
+    }
+
+    // Кнопка назад
+    private fun initToolbar () {
+        toolbar1.setNavigationIcon(R.drawable.ic_back_white)
+        toolbar1.setNavigationOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
