@@ -22,7 +22,14 @@
         <item>Одяг</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="products_category_laptop_pc">
+        <item>Ноутбук Asus Vivobook s13 s300f</item>
+        <item>Ноутбук Acer Aspire 5 A515 54G</item>
+        <item>Ноутбук Apple Macbook Pro13 2020</item>
+        <item>Ноутбук Acer Swift 3 SF314 58 52DU</item>
+        <item>Комп\'ютер ARTLINE Gaming X39 v33</item>
+        <item>Комп\'ютер Everest Home 4070</item>
+        <item>Комп\'ютер Artline Gaming G77 v15</item>
+    </string-array>
 
 </resources>

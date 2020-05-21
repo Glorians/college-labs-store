@@ -4,12 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_list_category.*
 import ua.glorians.csbc.labs.store.model.Category
 import ua.glorians.csbc.labs.store.adapters.CategoryAdapter
 import ua.glorians.csbc.labs.store.R
+import ua.glorians.csbc.labs.store.fragments.ListProductsFragment
+import ua.glorians.csbc.labs.store.model.Product
 
 class ListCategoryActivity : AppCompatActivity() {
 
@@ -18,8 +19,6 @@ class ListCategoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_list_category)
         initToolbar()
         initAdapter()
-        Toast.makeText(this, "text", Toast.LENGTH_SHORT).show()
-
     }
 
 
@@ -33,17 +32,46 @@ class ListCategoryActivity : AppCompatActivity() {
                 object :
                     CategoryAdapter.Callback {
                     override fun onItemClicked(category: Category) {
-                        Log.d("DEBUG", category.headline)
-//                println(resources.getString(item.headline))
-//                val detailsFragment =
-//                    DetailsFragment.newInstance(item)
-//                fragmentManager!!.beginTransaction()
-//                    .replace(R.id.fragment_list, detailsFragment, "detailsFragment")
-//                    .addToBackStack(null)
-//                    .commit()
+                        Log.d("Click Category", category.headline)
+                        initFragmentListProduct()
+                        productTransferFragment(category.listProduct)
                     }
                 })
     }
+
+    private fun productTransferFragment (listProduct: MutableList<Product>) {
+        val list = listProduct.toTypedArray()
+        val bundle = Bundle()
+        bundle.putParcelableArray("arrayProduct", list)
+    }
+
+    private fun initFragmentListProduct() {
+        val listProductFragment = ListProductsFragment()
+        supportFragmentManager.beginTransaction().add(R.id.container, listProductFragment).commit()
+    }
+
+    private fun dataProduct (n: Int): MutableList<Product> {
+
+        val listProduct = mutableListOf<Product>()
+
+        val listProductHeadline = resources.getStringArray(R.array.products_category_laptop_pc)
+
+        var i = 0
+        val count: Int = listProductHeadline.size //Кількість каталогів, які потрібно створити
+        while (i < count) {
+
+            listProduct.add(
+                Product(
+                    listProductHeadline[i],
+                    R.drawable.vivobook,
+                    "laptop"
+                )
+            )
+            i++
+        }
+        return listProduct
+    }
+
 
     // Метод який сворює об'єкти Category
     private fun dataCategory () : MutableList<Category>{
@@ -63,7 +91,8 @@ class ListCategoryActivity : AppCompatActivity() {
                 Category(
                     listCategoryHeadline[i], // Назва каталогу
                     listCategoryIcon.getResourceId(i, -1), // Іконка каталогу
-                    i.toString() // Опис каталогу... Лень... Пускай буде цифри
+                    i.toString(), // Опис каталогу... Лень... Пускай буде цифри
+                    dataProduct(i)
                 )
             )
             i++
