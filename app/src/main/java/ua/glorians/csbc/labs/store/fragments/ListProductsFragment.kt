@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_list_category.*
 import kotlinx.android.synthetic.main.fragment_list_products.*
 import ua.glorians.csbc.labs.store.R
 import ua.glorians.csbc.labs.store.adapters.ProductAdapter
@@ -18,7 +19,7 @@ import ua.glorians.csbc.labs.store.model.Product
 class ListProductsFragment(context: Context) : Fragment() {
 
 
-    private val context1 = context
+    private val context1 = context // Не робіть так
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("context", context1.toString())
@@ -34,6 +35,17 @@ class ListProductsFragment(context: Context) : Fragment() {
     override fun onStart() {
         initAdapter()
         super.onStart()
+    }
+
+    private fun initInfoFragment() {
+        val test = R.id.container.toString()
+        Log.d("test", test)
+        val infoFragment = InfoProductFragment(context1)
+        activity!!.supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container_fragments, infoFragment)
+            .addToBackStack(infoFragment.toString())
+            .commit()
     }
 
     private fun initAdapter () {
@@ -53,6 +65,7 @@ class ListProductsFragment(context: Context) : Fragment() {
                     ProductAdapter.Callback {
                     override fun onItemClicked(product: Product) {
                         Log.d("Click product", product.name)
+                        initInfoFragment()
                     }
                 })
 

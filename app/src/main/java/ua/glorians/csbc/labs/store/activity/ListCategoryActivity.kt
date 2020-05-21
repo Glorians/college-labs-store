@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_list_category.*
 import ua.glorians.csbc.labs.store.model.Category
 import ua.glorians.csbc.labs.store.adapters.CategoryAdapter
 import ua.glorians.csbc.labs.store.R
+import ua.glorians.csbc.labs.store.fragments.InfoProductFragment
 import ua.glorians.csbc.labs.store.fragments.ListProductsFragment
 import ua.glorians.csbc.labs.store.model.Product
 
@@ -50,8 +51,14 @@ class ListCategoryActivity : AppCompatActivity() {
     private fun initFragmentListProduct(bundle: Bundle) {
         val listProductFragment = ListProductsFragment(this)
         listProductFragment.arguments = bundle
-        supportFragmentManager.beginTransaction().add(R.id.container, listProductFragment).commit()
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.container_fragments, listProductFragment)
+            .addToBackStack(listProductFragment.toString())
+            .commit()
     }
+
+
 
     private fun dataProduct (n: Int): MutableList<Product> {
 
