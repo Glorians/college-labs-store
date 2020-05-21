@@ -11,7 +11,7 @@ import ua.glorians.csbc.labs.store.model.Product
 
 
 // Адаптер для Product
-class ProductAdapter (private val items: Array<Product>, val callback: Callback):
+class ProductAdapter (private val items: MutableList<Product>, val callback: Callback):
     RecyclerView.Adapter<ProductAdapter.HolderProduct>() {
 
     // Створюємо майбутній item по шаблону item_product

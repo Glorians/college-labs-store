@@ -33,20 +33,23 @@ class ListCategoryActivity : AppCompatActivity() {
                     CategoryAdapter.Callback {
                     override fun onItemClicked(category: Category) {
                         Log.d("Click Category", category.headline)
-                        initFragmentListProduct()
-                        productTransferFragment(category.listProduct)
+                        initFragmentListProduct(
+                            categoryTransferFragment(category)
+                        )
                     }
                 })
     }
 
-    private fun productTransferFragment (listProduct: MutableList<Product>) {
-        val list = listProduct.toTypedArray()
+    private fun categoryTransferFragment (category: Category): Bundle {
         val bundle = Bundle()
-        bundle.putParcelableArray("arrayProduct", list)
+        bundle.putParcelable("category", category)
+        bundle.putString("str", "test")
+        return bundle
     }
 
-    private fun initFragmentListProduct() {
-        val listProductFragment = ListProductsFragment()
+    private fun initFragmentListProduct(bundle: Bundle) {
+        val listProductFragment = ListProductsFragment(this)
+        listProductFragment.arguments = bundle
         supportFragmentManager.beginTransaction().add(R.id.container, listProductFragment).commit()
     }
 
