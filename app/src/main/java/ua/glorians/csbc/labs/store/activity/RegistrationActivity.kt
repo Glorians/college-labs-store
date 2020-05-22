@@ -3,7 +3,10 @@ package ua.glorians.csbc.labs.store.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
+import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.activity_registration.*
 import ua.glorians.csbc.labs.store.R
 
 class RegistrationActivity : AppCompatActivity() {
@@ -17,6 +20,26 @@ class RegistrationActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+
         }
+
+        btn.setOnClickListener{
+            val intent = Intent(this, UserProfileActivity::class.java)
+            if (checkInput()) {
+                intent.putExtra("name", name.text.toString())
+                startActivity(intent)
+            }
+        }
+    }
+
+    private fun checkInput (): Boolean {
+        val nameTest = name.text.toString()
+
+        return if (nameTest.length < 2) {
+            Toast.makeText(this, "Введіть ім'я", LENGTH_LONG).show()
+            false
+        }
+        else true
+
     }
 }

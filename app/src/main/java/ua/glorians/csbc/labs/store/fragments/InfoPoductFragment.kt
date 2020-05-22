@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_info_product.*
 import ua.glorians.csbc.labs.store.R
+import ua.glorians.csbc.labs.store.model.Product
 
 
 class InfoProductFragment(context: Context) : Fragment() {
@@ -26,6 +28,8 @@ class InfoProductFragment(context: Context) : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
+        val product = arguments?.getParcelable<Product>("product")
+        imageProduct.setImageResource(product!!.image)
+        nameProduct.text = product.name
     }
 }
